@@ -1,12 +1,15 @@
 # Delete-line-in-text-editor-Blender-addon
 Adds missing shortut for deleting the line just like in the VS Code.
+***
 ![showcase img](showcase.png)
+
+***
 ## How to install?
-  1. Download the .zip file.
+  1. Download the source code and make a .zip file with `delete_line` folder with the source code files.
   2. Open the Blender
   3. Open Preferences
-  4. Install an addon button (top right corner).
-  5. Select the zip file.
+  4. Click the Install an addon button (top right corner).
+  5. Select the .zip file.
 
 ## Addon description
 A small addon that adds the funcionality of deleting the current line in the text editor.  And it is also cuting the content into the clipboard. This means you can then paste the deleted line wherever you want.
