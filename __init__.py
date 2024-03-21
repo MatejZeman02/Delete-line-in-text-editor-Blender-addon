@@ -1,36 +1,47 @@
-""" The script adds the shortcut to the text editor to delete the current line, just like in VS Code. CTRL + SHIFT + BACKSPACE by default. """
-# this program is free to use
-# feel free to change and redistribute anything from this program
-# the code is not perfect, but short and simple using only the blender api
+"""
+The script adds the shortcut to the text editor to delete the current line, just like in VS Code.
+CTRL + SHIFT + BACKSPACE by default.
+This program is free to use,
+feel free to change and redistribute anything from this program (under the License).
+The code is short and simple using only the Blender Python api.
+"""
 
 bl_info = {
     "name": "Text editor shortcut: Delete Line",
-    "author": "Bambusak <bambusak85@gmail.com>",
-    "version": (1, 0),
-    "blender": (3, 6, 0),
+    "author": "Matej Zeman <matej.zeman01@gmail.com>",
+    "version": (1, 1),
+    "blender": (4, 2, 0),
     "category": "shortcut",
     "location": "text editor",
-    "description": "Adds the shortcut to the text editor to delete the current line, just like in VS Code. CTRL + SHIFT + BACKSPACE by default.",
+    "description": "Adds shortcut (CTRL + SHIFT + BACKSPACE) to delete current line in text editor\
+(behaves like in VS Code).",
 }
 
-if "bpy" in locals():
-    import importlib
-    importlib.reload(delete_line)
-else:
-    from . import delete_line
+try:
+    if "bpy" in locals():
+        import importlib
+        importlib.reload(text_ot_delete_line)
+    else:
+        from . import text_ot_delete_line
+    import bpy
+except ImportError as exp:
+    raise ImportError(
+        "<<< Probably missing bpy module >>>\n\
+             Hint: place the folder inside Blender's addons folder. Or use preferences to install."
+    ) from exp
 
-import bpy
+classes = [
+    text_ot_delete_line.TEXT_OT_DeleteLine,
+]
 
 def register():
     """ Registers the operator and adds the shortcut to the text editor. """
-    bpy.utils.register_class(delete_line.TEXT_OT_DeleteLine)
-    wm = bpy.context.window_manager
-    km = wm.keyconfigs.addon.keymaps.new(name="Text", space_type='TEXT_EDITOR')
-    # Set the shortcut to CTRL + SHIFT + BACKSPACE by default
-    kmi = km.keymap_items.new(delete_line.TEXT_OT_DeleteLine.bl_idname, 'BACK_SPACE', 'PRESS', ctrl=True, shift=True)
-    # asign the kmi
-    kmi.active = True
+    for cl in classes:
+        bpy.utils.register_class(cl)
+    text_ot_delete_line.TEXT_OT_DeleteLine.create_shortcut()
 
 def unregister():
     """ Unregisters the operator and removes the shortcut from the text editor. """
-    bpy.utils.unregister_class(delete_line.TEXT_OT_DeleteLine)
+    text_ot_delete_line.TEXT_OT_DeleteLine.remove_shortcut()
+    for cl in reversed(classes):
+        bpy.utils.unregister_class(cl)
