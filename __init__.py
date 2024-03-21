@@ -9,7 +9,7 @@ The code is short and simple using only the Blender Python api.
 bl_info = {
     "name": "Text editor shortcut: Delete Line",
     "author": "Matej Zeman <matej.zeman01@gmail.com>",
-    "version": (1, 1),
+    "version": (1, 2),
     "blender": (4, 2, 0),
     "category": "shortcut",
     "location": "text editor",

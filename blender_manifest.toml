@@ -1,0 +1,17 @@
+id = "delete_line_shortcut"
+version = "1.2.1"
+schema_version = "1.0.0"
+blender_version_min = "4.2.0"
+
+name = "Delete Line Shortcut"
+description = "Adds a new shortcut to delete a line and copy its content, similar to VS Code."
+tagline = "Shortcut to delete a line and copy its content"
+maintainer = "Matej Zeman <matej.zeman01@gmail.com>"
+type = "add-on"
+
+website = "https://github.com/MatejZeman02/Delete-line-in-text-editor-Blender-addon"
+copyright = ["2024 Matej Zeman",]
+tags = ["User Interface", "Text Editor"]
+license = ["SPDX:GPL-3.0-or-later"]
+
+location = "Text Editor"
