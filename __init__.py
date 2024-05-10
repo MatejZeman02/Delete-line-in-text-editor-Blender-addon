@@ -1,15 +1,16 @@
 """
 The script adds the shortcut to the text editor to delete the current line, just like in VS Code.
 CTRL + SHIFT + BACKSPACE by default.
+
 This program is free to use,
 feel free to change and redistribute anything from this program (under the License).
-The code is short and simple using only the Blender Python api.
+The code is using only the Blender Python api.
 """
 
 bl_info = {
     "name": "Text editor shortcut: Delete Line",
     "author": "Matej Zeman <matej.zeman01@gmail.com>",
-    "version": (1, 2),
+    "version": (1, 2, 2),
     "blender": (4, 2, 0),
     "category": "shortcut",
     "location": "text editor",

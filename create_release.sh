@@ -11,7 +11,7 @@ temp_dir="delete-line-addon"
 mkdir -p "$temp_dir"
 
 # cpy necessary files
-cp __init__.py README.md LICECNSE text_ot_delete_line.py blender_manifest.toml "$temp_dir"
+cp __init__.py README.md LICENSE text_ot_delete_line.py blender_manifest.toml "$temp_dir"
 
 version="$1"
 zip_name="delete-line-addon-v${version}.zip"
